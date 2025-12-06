@@ -1,3 +1,5 @@
+VMの外からも接続可に修正
+
 <h1 align="center"><b> x64dbg MCP </b> </h1>
 
 
