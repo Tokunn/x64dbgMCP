@@ -235,7 +235,7 @@ DWORD WINAPI HttpServerThread(LPVOID lpParam) {
     // Setup the server address structure
     sockaddr_in serverAddr;
     serverAddr.sin_family = AF_INET;
-    serverAddr.sin_addr.s_addr = htonl(INADDR_LOOPBACK); // localhost only
+    serverAddr.sin_addr.s_addr = htonl(INADDR_ANY); // 外部からも受付
     serverAddr.sin_port = htons((u_short)g_httpPort);
     
     // Bind the socket
@@ -254,7 +254,7 @@ DWORD WINAPI HttpServerThread(LPVOID lpParam) {
         return 1;
     }
     
-    _plugin_logprintf("HTTP server started at http://localhost:%d/\n", g_httpPort);
+    _plugin_logprintf("HTTP server started at http://0.0.0.0:%d/\n", g_httpPort);
     
     // Set socket to non-blocking mode
     u_long mode = 1;
